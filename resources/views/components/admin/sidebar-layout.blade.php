@@ -34,41 +34,41 @@
                         </a>
                     </li>
 
-{{--                    <li  @class(['nav-item', 'menu-open' => $menuUtama == 'master'])>--}}
-{{--                        <a href="#" class="nav-link">--}}
-{{--                            <i class="nav-icon fas fa-copy"></i>--}}
-{{--                            <p>--}}
-{{--                                Master Data--}}
-{{--                                <i class="fas fa-angle-left right"></i>--}}
-{{--                            </p>--}}
-{{--                        </a>--}}
-{{--                        <ul class="nav nav-treeview">--}}
-{{--                            <li class="nav-item">--}}
-{{--                                <a href="{{route('adm.users')}}" @class(['nav-link', 'active' => $menuKedua == 'user'])>--}}
-{{--                                    <i class="far fa-circle nav-icon"></i>--}}
-{{--                                    <p>Users</p>--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                            <li class="nav-item">--}}
-{{--                                <a href="{{route('adm.merchant')}}" @class(['nav-link', 'active' => $menuKedua == 'merchant'])>--}}
-{{--                                    <i class="far fa-circle nav-icon"></i>--}}
-{{--                                    <p>Merchant</p>--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                            <li class="nav-item">--}}
-{{--                                <a href="{{route('adm.pembeli')}}" @class(['nav-link', 'active' => $menuKedua == 'pembeli'])>--}}
-{{--                                    <i class="far fa-circle nav-icon"></i>--}}
-{{--                                    <p>Pembeli</p>--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                            <li class="nav-item">--}}
-{{--                                <a href="{{route('adm.menu')}}" @class(['nav-link', 'active' => $menuKedua == 'menu'])>--}}
-{{--                                    <i class="far fa-circle nav-icon"></i>--}}
-{{--                                    <p>Menu</p>--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
+                    <li  @class(['nav-item', 'menu-open' => $menuUtama == 'master'])>
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-copy"></i>
+                            <p>
+                                Master Data
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('adm.master.user')}}" @class(['nav-link', 'active' => $menuKedua == 'user'])>
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Users</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" @class(['nav-link', 'active' => $menuKedua == 'merchant'])>
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Merchant</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" @class(['nav-link', 'active' => $menuKedua == 'pembeli'])>
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Pembeli</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" @class(['nav-link', 'active' => $menuKedua == 'menu'])>
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Menu</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 {{--                    <li class="nav-item">--}}
 {{--                        <a href="#" class="nav-link">--}}
 {{--                            <i class="nav-icon fas fa-chart-pie"></i>--}}

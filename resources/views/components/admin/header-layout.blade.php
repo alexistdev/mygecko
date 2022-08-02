@@ -22,6 +22,7 @@
     <!-- Datatable -->
     <link rel="stylesheet" href="{{asset('adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
     <link rel="stylesheet" href="{{asset('adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.css')}}">
+
     <style type="text/css"> .notify{ z-index: 1000000; margin-top: 5%; } </style>
 </div>
 

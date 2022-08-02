@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\{DashboardController as DashAdmin};
+use App\Http\Controllers\Admin\{DashboardController as DashAdmin,
+    UserController as UserAdmin};
 
 
 Route::get('/', function () {
@@ -15,6 +16,11 @@ Route::get('/dashboard', function () {
 Route::group(['middleware' => ['web','auth','roles']],function() {
     Route::group(['roles' => 'admin'], function () {
         Route::get('/admin/dashboard', [DashAdmin::class, 'index'])->name('adm.dashboard');
+
+
+        Route::get('/admin/user', [UserAdmin::class, 'index'])->name('adm.master.user');
+        Route::post('/admin/user', [UserAdmin::class, 'store'])->name('adm.master.usersave');
+        Route::patch('/admin/user', [UserAdmin::class, 'update'])->name('adm.master.userupdate');
     });
 });
 

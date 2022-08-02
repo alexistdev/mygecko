@@ -7,7 +7,7 @@
     <!-- START:  Header -->
     <x-admin.header-layout />
     <!-- END:  Header -->
-    @notifyCss
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -32,7 +32,7 @@
 </div>
 <!-- ./wrapper -->
 
-@notifyJs
+
 <!-- ChartJS -->
 <script src="{{asset('adminlte/plugins/chart.js/Chart.min.js')}}"></script>
 <!-- Sparkline -->
