@@ -21,6 +21,7 @@ Route::group(['middleware' => ['web','auth','roles']],function() {
         Route::get('/admin/user', [UserAdmin::class, 'index'])->name('adm.master.user');
         Route::post('/admin/user', [UserAdmin::class, 'store'])->name('adm.master.usersave');
         Route::patch('/admin/user', [UserAdmin::class, 'update'])->name('adm.master.userupdate');
+        Route::delete('/admin/user', [UserAdmin::class, 'destroy'])->name('adm.master.userdelete');
     });
 });
 

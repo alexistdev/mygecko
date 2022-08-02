@@ -19,7 +19,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware(function ($request, $next) {
-            $this->users=Auth::user();
+            $this->users = Auth::user();
             return $next($request);
         });
     }
@@ -28,7 +28,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $user = User::where('role_id',"3")->get();
+            $user = User::where('role_id', "3")->get();
             return DataTables::of($user)
                 ->addIndexColumn()
                 ->editColumn('created_at', function ($request) {
@@ -36,13 +36,13 @@ class UserController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     $btn = "<button class=\"btn btn-sm btn-primary ml-1 open-edit\" data-id=\"$row->id\" data-name=\"$row->name\" data-email=\"$row->email\" data-toggle=\"modal\" data-target=\"#modalEdit\"> Edit</button>";
-                    $btn = $btn."<button class=\"btn btn-sm btn-danger ml-1\"> Hapus</button>";
+                    $btn = $btn . "<button class=\"btn btn-sm btn-danger ml-1 open-hapus\" data-id=\"$row->id\" data-toggle=\"modal\" data-target=\"#modalHapus\"> Hapus</button>";
                     return $btn;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('admin.master.user',array(
+        return view('admin.master.user', array(
             'judul' => "Dashboard Administrator | MyJob v.1",
             'menuUtama' => 'master',
             'menuKedua' => 'user',
@@ -119,9 +119,10 @@ class UserController extends Controller
                 'password.max' => "Panjang karakter yang minimal adalah 16 karakter!",
             ];
             $request->validateWithBag('edit', $rules, $message);
+            DB::beginTransaction();
             try {
                 $user = User::findOrFail($request->user_id);
-                if($request->password !== null){
+                if ($request->password !== null) {
                     $user->update([
                         'name' => $request->name,
                         'email' => $request->email,
@@ -135,6 +136,35 @@ class UserController extends Controller
                 }
                 DB::commit();
                 notify()->success('Data pengguna berhasil diupdate !');
+                return redirect(route('adm.master.user'));
+            } catch (Exception $e) {
+                DB::rollback();
+                notify()->error($e->getMessage());
+                return redirect(route('adm.master.user'));
+            }
+        } else {
+            return abort("404", "NOT FOUND");
+        }
+    }
+
+    /** route: adm.master.userdelete */
+    public function destroy(Request $request)
+    {
+        if ($request->routeIs('adm.*')) {
+            $rules = [
+                'user_id' => 'required|numeric',
+            ];
+            $message = [
+                'user_id.required' => "ID tidak ditemukan silahkan refresh halaman!",
+                'user_id.numeric' => "ID tidak ditemukan silahkan refresh halaman!",
+            ];
+            $request->validateWithBag('hapus', $rules, $message);
+            DB::beginTransaction();
+            try{
+                $user = User::findOrFail($request->user_id);
+                $user->delete();
+                DB::commit();
+                notify()->error('Pengguna berhasil dihapus !', "Hapus");
                 return redirect(route('adm.master.user'));
             } catch (Exception $e) {
                 DB::rollback();

@@ -137,7 +137,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah User</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -213,24 +213,74 @@
     </div>
     <!-- End: Modal Edit -->
 
+    <!-- Start: Modal Hapus -->
+    <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Hapus User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{route('adm.master.userdelete')}}" method="post">
+                    @csrf
+                    @method('delete')
+                    <div class="modal-body">
+                        <div class="row justify-content-center">
+                            @if($errors->hapus->has('user_id'))
+                                <span
+                                    class="text-center text-danger errorMessage">{{$errors->hapus->first('user_id')}}</span>
+                            @endif
+                            <div class="col-md-12">
+                                <input type="hidden" name="user_id" class="form-control" id="userhapus_id" value="{{old('user_id')}}">
+                            </div>
+                        </div>
+                        Hapus data pengguna ini ?
+                    </div>
+                    <div class="modal-footer mt-3">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Hapus</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End: Modal Hapus -->
+
     <x-admin.js-layout />
     @notifyJs
     <script>
         var modaltambah = new bootstrap.Modal(document.getElementById("modalTambah"), {});
         var modaledit = new bootstrap.Modal(document.getElementById("modalEdit"), {});
+        var modalhapus = new bootstrap.Modal(document.getElementById("modalHapus"), {});
 
         @if($errors->hasbag('tambah'))
             document.onreadystatechange = function () {
             modaltambah.show();
         };
         @endif
-            @if($errors->hasbag('edit'))
+
+        @if($errors->hasbag('edit'))
             document.onreadystatechange = function () {
             modaledit.show();
         };
         @endif
 
+        @if($errors->hasbag('hapus'))
+            document.onreadystatechange = function () {
+            modalhapus.show();
+        };
+        @endif
+
         /** Saat tombol hapus di klik*/
+        $(document).on("click", ".open-hapus", function (e) {
+            e.preventDefault();
+            let fid = $(this).data('id');
+            $('#userhapus_id').val(fid);
+        })
+
+        /** Saat tombol edit di klik*/
         $(document).on("click", ".open-edit", function (e) {
             e.preventDefault();
             let fid = $(this).data('id');
@@ -239,7 +289,7 @@
             $('#useredit_id').val(fid);
             $('#nameEdit').val(fname);
             $('#emailEdit').val(femail);
-        })
+        });
 
         /** saat modal edit di closed maka modal akan dibersihkan */
         $('.modal').on('hidden.bs.modal', function (e) {
