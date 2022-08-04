@@ -92,7 +92,17 @@
                                             Sebelum pemberian makan ada baiknya pakan di gutload dengan bahan yang bernutrisi seperti kentang, wortel, ubi ungu ataupun gutload instan yang banyak di jual. Gutload berfungsi untuk memberikan asupan tambahan ke leopard gecko agar bisa lebih gemuk dan berisi. Ketika pemberian pakan, pakan bisa di dusting atau di lumuri dengan serbuk kalsium untuk meminimalisir terjadi penyakit MBD pada gecko nantinya.
                                             <br/>
                                             <br/>
-                                            <img src="{{asset('gambar/paketan.jpeg')}}" class="img-responsive" alt="paketan" width="500px" />
+                                            <img src="{{asset('gambar/gutload.jpg')}}" class="img-responsive" alt="gutload" width="500px" />
+                                        </li>
+                                        <li>
+                                            Membersihkan kandang leopard gecko:<br/>
+                                            Untuk yang menggunakan alas kertas, ganti kertas secara berkala apabila kertas sudah di rasa cukup dipenuhi dengan kotoran gecko (kurang lebih 2-3 hari sekali).
+                                            Untuk yang menggunakan alas cocopeat ataupun dolomit, serok kotoran gecko setiap hari dan ganti alas yang ikut terbuang dengan alas yang baru.
+                                            <br/>APAPUN ALASNYA, TETAP BERSIHKAN DAN GANTI AIR PADA WATERDISH SETIAP HARI AGAR GECKO KALIAN TIDAK TERKENA MASALAH PENCERNAAN!!!
+
+                                            <br/>
+                                            <br/>
+                                            <img src="{{asset('gambar/bersih-bersih.jpg')}}" class="img-responsive" alt="bersih-bersih" width="500px" />
                                         </li>
                                     </ol>
                                 </div>
