@@ -5,7 +5,8 @@ use App\Http\Controllers\Admin\{DashboardController as DashAdmin,
     UserController as UserAdmin,
     GejalaController as GejalaAdmin,
     PenyakitController as PenyakitAdmin};
-use App\Http\Controllers\User\{DashboardController as DashUser,CaraMerawat as CaraUser};
+use App\Http\Controllers\User\{DashboardController as DashUser,CaraMerawat as CaraUser,
+Pengenalan as PengenalanUser};
 
 
 
@@ -36,6 +37,7 @@ Route::group(['middleware' => ['web','auth','roles']],function() {
     Route::group(['roles' => 'user'], function () {
         Route::get('/user/dashboard', [DashUser::class, 'index'])->name('usr.dashboard');
         Route::get('/user/caramerawat', [CaraUser::class, 'index'])->name('user.caramerawat');
+        Route::get('/user/pengenalan', [PengenalanUser::class, 'index'])->name('user.pengenalan');
     });
 });
 

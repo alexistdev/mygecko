@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CaraMerawat extends Controller
+class Pengenalan extends Controller
 {
     protected $users;
 
@@ -20,10 +20,10 @@ class CaraMerawat extends Controller
 
     public function index()
     {
-        return view('user.caramerawat',array(
+        return view('user.pengenalan',array(
             'judul' => "Dashboard Administrator | MyGecko v.1",
-            'menuUtama' => 'caramerawat',
-            'menuKedua' => 'caramerawat',
+            'menuUtama' => 'pengenalan',
+            'menuKedua' => 'pengenalan',
         ));
     }
 }

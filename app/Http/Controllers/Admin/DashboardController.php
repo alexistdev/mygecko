@@ -21,7 +21,7 @@ class DashboardController extends Controller
     public function index()
     {
         return view('admin.dashboard',array(
-            'judul' => "Dashboard Administrator | MyJob v.1",
+            'judul' => "Dashboard Administrator | MyGecko v.1",
             'menuUtama' => 'dashboard',
             'menuKedua' => 'dashboard',
         ));

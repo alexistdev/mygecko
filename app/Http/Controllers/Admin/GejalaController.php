@@ -41,7 +41,7 @@ class GejalaController extends Controller
                 ->make(true);
         }
         return view('admin.master.gejala', array(
-            'judul' => "Dashboard Administrator | MyJob v.1",
+            'judul' => "Dashboard Administrator | MyGecko v.1",
             'menuUtama' => 'master',
             'menuKedua' => 'gejala',
         ));

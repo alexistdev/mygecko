@@ -147,6 +147,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{route('user.pengenalan')}}" @class(['nav-link', 'active' => $menuUtama == 'pengenalan'])>
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Pengenalan
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{route('user.caramerawat')}}" @class(['nav-link', 'active' => $menuUtama == 'caramerawat'])>
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
@@ -154,8 +162,33 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('user.caramerawat')}}" @class(['nav-link', 'active' => $menuUtama == 'morph'])>
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Morph
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('user.caramerawat')}}" @class(['nav-link', 'active' => $menuUtama == 'penyakit'])>
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Penyakit & Pengobatan
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('user.caramerawat')}}" @class(['nav-link', 'active' => $menuUtama == 'deteksi'])>
+                                <i class="nav-icon fas fa-user-md"></i>
+                                <p>
+                                    Deteksi Penyakit
+                                </p>
+                            </a>
+                        </li>
 
-{{--                        <li @class(['nav-item', 'menu-open' => $menuUtama == 'master'])>--}}
+
+                        {{--                        <li @class(['nav-item', 'menu-open' => $menuUtama == 'master'])>--}}
 {{--                            <a href="#" class="nav-link">--}}
 {{--                                <i class="nav-icon fas fa-copy"></i>--}}
 {{--                                <p>--}}

@@ -43,7 +43,7 @@ class UserController extends Controller
                 ->make(true);
         }
         return view('admin.master.user', array(
-            'judul' => "Dashboard Administrator | MyJob v.1",
+            'judul' => "Dashboard Administrator | MyGecko v.1",
             'menuUtama' => 'master',
             'menuKedua' => 'user',
         ));
