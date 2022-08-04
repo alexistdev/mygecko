@@ -6,7 +6,10 @@ use App\Http\Controllers\Admin\{DashboardController as DashAdmin,
     GejalaController as GejalaAdmin,
     PenyakitController as PenyakitAdmin};
 use App\Http\Controllers\User\{DashboardController as DashUser,CaraMerawat as CaraUser,
-Pengenalan as PengenalanUser};
+Pengenalan as PengenalanUser,
+MorphController as MorphUser,
+Penyakitpengobatan as PPUser,
+Deteksi as DetUser};
 
 
 
@@ -38,6 +41,9 @@ Route::group(['middleware' => ['web','auth','roles']],function() {
         Route::get('/user/dashboard', [DashUser::class, 'index'])->name('usr.dashboard');
         Route::get('/user/caramerawat', [CaraUser::class, 'index'])->name('user.caramerawat');
         Route::get('/user/pengenalan', [PengenalanUser::class, 'index'])->name('user.pengenalan');
+        Route::get('/user/morph', [MorphUser::class, 'index'])->name('user.morph');
+        Route::get('/user/penyakitpengobatan', [PPUser::class, 'index'])->name('user.penyakitpengobatan');
+        Route::get('/user/deteksi', [DetUser::class, 'index'])->name('user.deteksi');
     });
 });
 

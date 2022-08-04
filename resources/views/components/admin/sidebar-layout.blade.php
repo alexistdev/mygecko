@@ -163,7 +163,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('user.caramerawat')}}" @class(['nav-link', 'active' => $menuUtama == 'morph'])>
+                            <a href="{{route('user.morph')}}" @class(['nav-link', 'active' => $menuUtama == 'morph'])>
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
                                     Morph
@@ -171,7 +171,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('user.caramerawat')}}" @class(['nav-link', 'active' => $menuUtama == 'penyakit'])>
+                            <a href="{{route('user.penyakitpengobatan')}}" @class(['nav-link', 'active' => $menuUtama == 'penyakitpengobatan'])>
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
                                     Penyakit & Pengobatan
@@ -179,7 +179,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('user.caramerawat')}}" @class(['nav-link', 'active' => $menuUtama == 'deteksi'])>
+                            <a href="{{route('user.deteksi')}}" @class(['nav-link', 'active' => $menuUtama == 'deteksi'])>
                                 <i class="nav-icon fas fa-user-md"></i>
                                 <p>
                                     Deteksi Penyakit
