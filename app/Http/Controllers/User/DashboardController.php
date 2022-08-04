@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -20,7 +20,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('admin.dashboard',array(
+        return view('user.dashboard',array(
             'judul' => "Dashboard Administrator | MyJob v.1",
             'menuUtama' => 'dashboard',
             'menuKedua' => 'dashboard',

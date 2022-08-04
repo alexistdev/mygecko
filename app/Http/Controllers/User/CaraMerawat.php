@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class CaraMerawat extends Controller
 {
     protected $users;
 
@@ -20,10 +20,10 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('admin.dashboard',array(
+        return view('user.caramerawat',array(
             'judul' => "Dashboard Administrator | MyJob v.1",
-            'menuUtama' => 'dashboard',
-            'menuKedua' => 'dashboard',
+            'menuUtama' => 'caramerawat',
+            'menuKedua' => 'caramerawat',
         ));
     }
 }

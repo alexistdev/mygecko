@@ -37,6 +37,8 @@ class AuthenticatedSessionController extends Controller
         switch ($roleId){
             case 1:
                 return redirect()->intended(RouteServiceProvider::ADMIN);
+            case 2:
+                return redirect()->intended(RouteServiceProvider::USER);
             default:
                 $request->session()->invalidate();
                 $request->session()->regenerateToken();
