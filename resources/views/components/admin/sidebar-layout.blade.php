@@ -65,6 +65,12 @@
                                         <p>Penyakit</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{route('adm.basispengetahuan')}}" @class(['nav-link', 'active' => $menuKedua == 'basispengetahuan'])>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Basis Pengetahuan</p>
+                                    </a>
+                                </li>
                                 {{--                            <li class="nav-item">--}}
                                 {{--                                <a href="" @class(['nav-link', 'active' => $menuKedua == 'menu'])>--}}
                                 {{--                                    <i class="far fa-circle nav-icon"></i>--}}

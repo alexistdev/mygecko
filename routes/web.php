@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{DashboardController as DashAdmin,
     UserController as UserAdmin,
     GejalaController as GejalaAdmin,
-    PenyakitController as PenyakitAdmin};
+    PenyakitController as PenyakitAdmin,
+    BasispengetahuanController as BasisAdmin};
 use App\Http\Controllers\User\{DashboardController as DashUser,CaraMerawat as CaraUser,
 Pengenalan as PengenalanUser,
 MorphController as MorphUser,
@@ -23,6 +24,9 @@ Route::get('/dashboard', function () {
 Route::group(['middleware' => ['web','auth','roles']],function() {
     Route::group(['roles' => 'admin'], function () {
         Route::get('/admin/dashboard', [DashAdmin::class, 'index'])->name('adm.dashboard');
+
+        Route::get('/admin/basis_pengetahuan', [BasisAdmin::class, 'index'])->name('adm.basispengetahuan');
+        Route::post('/admin/basis_pengetahuan', [BasisAdmin::class, 'store'])->name('adm.basispengetahuan.save');
 
 
         Route::get('/admin/user', [UserAdmin::class, 'index'])->name('adm.master.user');
