@@ -40,6 +40,7 @@
                                 <thead>
                                 <tr>
                                     <th scope="col" class="text-center">#</th>
+                                    <th scope="col" class="text-center">KODE</th>
                                     <th scope="col" class="text-center">PENYAKIT</th>
                                     <th scope="col" class="text-center">GEJALA</th>
                                     <th scope="col" class="text-center">ACTION</th>
@@ -78,7 +79,7 @@
                                 <select name="penyakit_id"  @class(["form-control","errorInput",($errors->tambah->has('penyakit_id'))? "is-invalid":""]) id="penyakit_idtambah">
                                     <option value="">Pilih</option>
                                     @foreach($dataPenyakit as $penyakit){
-                                    <option value="{{$penyakit->id}}">{{$penyakit->name}}</option>
+                                    <option value="{{$penyakit->id}}">[{{$penyakit->kode}}] {{$penyakit->name}}</option>
                                         @endforeach
                                 </select>
                                 @if($errors->tambah->has('penyakit_id'))
@@ -98,7 +99,7 @@
                                 <select name="gejala_id"  @class(["form-control","errorInput",($errors->tambah->has('gejala_id'))? "is-invalid":""]) id="gejala_idtambah">
                                     <option value="">Pilih</option>
                                     @foreach($dataGejala as $gejala){
-                                    <option value="{{$gejala->id}}">{{$gejala->name}}</option>
+                                    <option value="{{$gejala->id}}">[{{$gejala->kode}}] {{$gejala->name}}</option>
                                     @endforeach
                                 </select>
                                 @if($errors->tambah->has('gejala_id'))
@@ -316,6 +317,7 @@
                             return meta.row + meta.settings._iDisplayStart + 1; //auto increment
                         }
                     },
+                    {data: 'kode', class: 'text-center'},
                     {data: 'penyakit', class: 'text-center'},
                     {data: 'gejala', class: 'left-center'},
                     {data: 'action', class: 'text-center', orderable: false},

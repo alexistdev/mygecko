@@ -28,7 +28,7 @@ class GejalaController extends Controller
     {
         if ($request->ajax()) {
             $gejala = Gejala::all();
-            return DataTables::of($gejala)
+            return DataTables::of(collect($gejala)->sortDesc())
                 ->addIndexColumn()
                 ->editColumn('created_at', function ($request) {
                     return $request->created_at->format('d-m-Y H:i:s');

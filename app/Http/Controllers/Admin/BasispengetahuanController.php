@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Helpers\Bantuan;
 use App\Models\Basispengetahuan;
 use App\Models\Gejala;
 use Exception;
@@ -83,7 +84,10 @@ class BasispengetahuanController extends Controller
                     DB::rollback();
                     notify()->error('Data sudah ada !',"gagal");
                 } else{
+                    $bantuan = new Bantuan("3");
+                    $kode = $bantuan->generateKode();
                     $basis = new Basispengetahuan();
+                    $basis->kode = $kode;
                     $basis->penyakit_id = $request->penyakit_id;
                     $basis->gejala_id = $request->gejala_id;
                     $basis->save();

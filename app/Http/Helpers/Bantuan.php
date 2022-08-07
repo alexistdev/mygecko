@@ -70,12 +70,10 @@ class Bantuan
     }
 
     /** kode Rule , tipe = 3 */
-    private function getKodeRule()
+    private function getKodeRule($kd = null)
     {
-        $basis = Basispengetahuan::latest('id')->first();
-
-
-        if($basis !== null){
+        if($kd !== null){
+            $basis = Basispengetahuan::where('kode',$kd)->latest('id')->first();
             $kode = $basis->kode;
             $kodeAngka = (int) filter_var($kode, FILTER_SANITIZE_NUMBER_INT);
             $kodeAngka += 1;
@@ -86,7 +84,21 @@ class Bantuan
             }
             return $angka.$kodeAngka;
         } else {
-            return "R01";
+            $basis = Basispengetahuan::latest('id')->first();
+            if($basis !== null){
+                $kode = $basis->kode;
+                $kodeAngka = (int) filter_var($kode, FILTER_SANITIZE_NUMBER_INT);
+                $kodeAngka += 1;
+                if(strlen($kodeAngka) == 1){
+                    $angka = "R0";
+                } else {
+                    $angka = "R";
+                }
+                return $angka.$kodeAngka;
+            } else {
+                return "R01";
+            }
         }
+
     }
 }
