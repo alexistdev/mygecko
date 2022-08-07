@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Gejala;
+use App\Http\Helpers\Bantuan;
+use Exception;
 use App\Models\Penyakit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
 class PenyakitController extends Controller
@@ -26,7 +28,7 @@ class PenyakitController extends Controller
     {
         if ($request->ajax()) {
             $penyakit = Penyakit::all();
-            return DataTables::of($penyakit)
+            return DataTables::of(collect($penyakit)->sortDesc())
                 ->addIndexColumn()
                 ->editColumn('created_at', function ($request) {
                     return $request->created_at->format('d-m-Y H:i:s');
@@ -44,5 +46,38 @@ class PenyakitController extends Controller
             'menuUtama' => 'master',
             'menuKedua' => 'penyakit',
         ));
+    }
+
+    /** route: adm.master.penyakit.save */
+    public function store(Request $request)
+    {
+        if ($request->routeIs('adm.*')) {
+            $rules = [
+                'name' => 'required|max:125',
+            ];
+            $message = [
+                'name.required' => 'Anda harus mengisi nama penyakit terlebih dahulu!',
+                'name.max' => 'Panjang karakter yang diperbolehkan adalah 125 karakter!',
+            ];
+            $request->validateWithBag('tambah', $rules, $message);
+            DB::beginTransaction();
+            try{
+                $bantuan = new Bantuan("1");
+                $kode = $bantuan->generateKode();
+                $penyakit = new Penyakit();
+                $penyakit->kode = $kode;
+                $penyakit->name = $request->name;
+                $penyakit->save();
+                DB::commit();
+                notify()->success('Data Penyakit berhasil ditambahkan!');
+                return redirect(route('adm.master.penyakit'));
+            } catch (Exception $e) {
+                DB::rollback();
+                notify()->error($e->getMessage());
+                return redirect(route('adm.master.penyakit'));
+            }
+        } else {
+            return abort("404", "NOT FOUND");
+        }
     }
 }

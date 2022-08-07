@@ -5,7 +5,8 @@ use App\Http\Controllers\Admin\{DashboardController as DashAdmin,
     UserController as UserAdmin,
     GejalaController as GejalaAdmin,
     PenyakitController as PenyakitAdmin,
-    BasispengetahuanController as BasisAdmin};
+    BasispengetahuanController as BasisAdmin,
+RuleController as RuleAdmin};
 use App\Http\Controllers\User\{DashboardController as DashUser,CaraMerawat as CaraUser,
 Pengenalan as PengenalanUser,
 MorphController as MorphUser,
@@ -28,6 +29,7 @@ Route::group(['middleware' => ['web','auth','roles']],function() {
         Route::get('/admin/basis_pengetahuan', [BasisAdmin::class, 'index'])->name('adm.basispengetahuan');
         Route::post('/admin/basis_pengetahuan', [BasisAdmin::class, 'store'])->name('adm.basispengetahuan.save');
 
+        Route::get('/admin/rule', [RuleAdmin::class, 'index'])->name('adm.rule');
 
         Route::get('/admin/user', [UserAdmin::class, 'index'])->name('adm.master.user');
         Route::post('/admin/user', [UserAdmin::class, 'store'])->name('adm.master.usersave');
@@ -37,6 +39,7 @@ Route::group(['middleware' => ['web','auth','roles']],function() {
         Route::get('/admin/gejala', [GejalaAdmin::class, 'index'])->name('adm.master.gejala');
 
         Route::get('/admin/penyakit', [PenyakitAdmin::class, 'index'])->name('adm.master.penyakit');
+        Route::post('/admin/penyakit', [PenyakitAdmin::class, 'store'])->name('adm.master.penyakit.save');
 
 
     });

@@ -54,21 +54,28 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('adm.master.gejala')}}" @class(['nav-link', 'active' => $menuKedua == 'gejala'])>
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Gejala</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
                                     <a href="{{route('adm.master.penyakit')}}" @class(['nav-link', 'active' => $menuKedua == 'penyakit'])>
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Penyakit</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <a href="{{route('adm.master.gejala')}}" @class(['nav-link', 'active' => $menuKedua == 'gejala'])>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Gejala</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
                                     <a href="{{route('adm.basispengetahuan')}}" @class(['nav-link', 'active' => $menuKedua == 'basispengetahuan'])>
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Basis Pengetahuan</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('adm.rule')}}" @class(['nav-link', 'active' => $menuKedua == 'rule'])>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Rule</p>
                                     </a>
                                 </li>
                                 {{--                            <li class="nav-item">--}}
