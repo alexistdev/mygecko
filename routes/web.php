@@ -37,6 +37,7 @@ Route::group(['middleware' => ['web','auth','roles']],function() {
         Route::delete('/admin/user', [UserAdmin::class, 'destroy'])->name('adm.master.userdelete');
 
         Route::get('/admin/gejala', [GejalaAdmin::class, 'index'])->name('adm.master.gejala');
+        Route::post('/admin/gejala', [GejalaAdmin::class, 'store'])->name('adm.master.gejala.save');
 
         Route::get('/admin/penyakit', [PenyakitAdmin::class, 'index'])->name('adm.master.penyakit');
         Route::post('/admin/penyakit', [PenyakitAdmin::class, 'store'])->name('adm.master.penyakit.save');

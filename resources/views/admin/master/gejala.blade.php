@@ -61,64 +61,30 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah User</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Gejala</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{route('adm.master.usersave')}}" method="post">
+                <form action="{{route('adm.master.gejala.save')}}" method="post">
                     @csrf
                     <div class="modal-body">
-                        <!-- Start: Nama Pengguna -->
+                        <!-- Start: Nama Gejala -->
                         <div class="row mt-2">
                             <div class="col-md-12">
-                                <label for="namaPengguna"
-                                      @class(["form-label","errorLabel",($errors->tambah->has('name'))? "text-danger":""]) >Nama
+                                <label for="namaGejala"
+                                    @class(["form-label","errorLabel",($errors->tambah->has('nama'))? "text-danger":""]) >Nama Gejala
                                 </label>
                                 <input type="text" name="name" maxlength="125"
                                        @class(["form-control","errorInput",($errors->tambah->has('name'))? "is-invalid":""]) value="{{old('name')}}"
-                                       id="namaPengguna" placeholder="Nama">
+                                       id="namaGejala" placeholder="Nama Gejala">
                                 @if($errors->tambah->has('name'))
                                     <span
                                         class="text-danger errorMessage">{{$errors->tambah->first('name')}}</span>
                                 @endif
                             </div>
                         </div>
-                        <!-- End: Nama Pengguna -->
-
-                        <!-- Start: Email -->
-                        <div class="row mt-2">
-                            <div class="col-md-12">
-                                <label for="email"
-                                    @class(["form-label","errorLabel",($errors->tambah->has('email'))? "text-danger":""]) >Email
-                                </label>
-                                <input type="email" name="email" maxlength="255"
-                                       @class(["form-control","errorInput",($errors->tambah->has('email'))? "is-invalid":""]) value="{{old('email')}}"
-                                       id="email" placeholder="Email">
-                                @if($errors->tambah->has('email'))
-                                    <span
-                                        class="text-danger errorMessage">{{$errors->tambah->first('email')}}</span>
-                                @endif
-                            </div>
-                        </div>
-                        <!-- End: Email -->
-
-                        <!-- Start: Password -->
-                        <div class="row mt-2 mb-2">
-                            <div class="col-md-12">
-                                <label for="password"
-                                    @class(["form-label","errorLabel",($errors->tambah->has('password'))? "text-danger":""]) >Password
-                                </label>
-                                <input type="password" name="password" maxlength="125"
-                                       @class(["form-control","errorInput",($errors->tambah->has('password'))? "is-invalid":""]) value="{{old('password')}}"
-                                       id="password" placeholder="******">
-                                @if($errors->tambah->has('password'))
-                                    <span
-                                        class="text-danger errorMessage">{{$errors->tambah->first('password')}}</span>
-                                @endif
-                            </div>
-                        </div>
-                        <!-- End: Password -->
+                        <!-- End: Nama Penyakit -->
 
                     </div>
                     <div class="modal-footer mt-3">
@@ -250,15 +216,15 @@
     <x-admin.js-layout />
     @notifyJs
     <script>
-        {{--var modaltambah = new bootstrap.Modal(document.getElementById("modalTambah"), {});--}}
+        var modaltambah = new bootstrap.Modal(document.getElementById("modalTambah"), {});
         {{--var modaledit = new bootstrap.Modal(document.getElementById("modalEdit"), {});--}}
         {{--var modalhapus = new bootstrap.Modal(document.getElementById("modalHapus"), {});--}}
 
-        {{--@if($errors->hasbag('tambah'))--}}
-        {{--    document.onreadystatechange = function () {--}}
-        {{--    modaltambah.show();--}}
-        {{--};--}}
-        {{--@endif--}}
+        @if($errors->hasbag('tambah'))
+            document.onreadystatechange = function () {
+            modaltambah.show();
+        };
+        @endif
 
         {{--@if($errors->hasbag('edit'))--}}
         {{--    document.onreadystatechange = function () {--}}
@@ -290,16 +256,16 @@
         {{--    $('#emailEdit').val(femail);--}}
         {{--});--}}
 
-        {{--/** saat modal edit di closed maka modal akan dibersihkan */--}}
-        {{--$('.modal').on('hidden.bs.modal', function (e) {--}}
-        {{--    e.preventDefault();--}}
-        {{--    let pesanError = $('.errorMessage');--}}
-        {{--    let errorInput = $('.errorInput');--}}
-        {{--    let errorLabel = $('.errorLabel');--}}
-        {{--    pesanError.html("");--}}
-        {{--    errorInput.removeClass('is-invalid');--}}
-        {{--    errorLabel.removeClass('text-danger');--}}
-        {{--})--}}
+        /** saat modal edit di closed maka modal akan dibersihkan */
+        $('.modal').on('hidden.bs.modal', function (e) {
+            e.preventDefault();
+            let pesanError = $('.errorMessage');
+            let errorInput = $('.errorInput');
+            let errorLabel = $('.errorLabel');
+            pesanError.html("");
+            errorInput.removeClass('is-invalid');
+            errorLabel.removeClass('text-danger');
+        })
         $(document).ready(function () {
             let base_url = "{{route('adm.master.gejala')}}";
             $('#tabel1').DataTable({
