@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('jawabans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('basispengetahuan_id')
+                ->constrained('basispengetahuans')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->foreignId('user_id')
                 ->constrained('users')
                 ->onUpdate('cascade')
