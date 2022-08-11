@@ -1,5 +1,5 @@
 
-
+<img src="https://i.postimg.cc/G273BfVv/Whats-App-Image-2022-08-11-at-7-02-45-AM.jpg" alt="Deteksi Penyakit"/>
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
