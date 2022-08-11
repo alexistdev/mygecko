@@ -52,6 +52,7 @@ Route::group(['middleware' => ['web','auth','roles']],function() {
         Route::get('/user/morph', [MorphUser::class, 'index'])->name('user.morph');
         Route::get('/user/penyakitpengobatan', [PPUser::class, 'index'])->name('user.penyakitpengobatan');
         Route::get('/user/deteksi', [DetUser::class, 'index'])->name('user.deteksi');
+        Route::post('/user/deteksi', [DetUser::class, 'simpan_jawaban'])->name('user.deteksi.save');
     });
 });
 
