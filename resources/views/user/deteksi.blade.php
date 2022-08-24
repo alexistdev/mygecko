@@ -48,7 +48,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <p>Apakah gecko: {{$dataGejala->gejala->name}} ?</p>
-                                            <input type="text" name="basis_id" value="{{$dataGejala->id}}">
+                                            <input type="hidden" name="basis_id" value="{{$dataGejala->id}}">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="jawaban" value="1"
                                                        id="flexRadioDefault1">
