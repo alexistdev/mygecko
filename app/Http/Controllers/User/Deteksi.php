@@ -122,4 +122,10 @@ class Deteksi extends Controller
             return abort("404", "NOT FOUND");
         }
     }
+
+    public function ulangi(){
+        Jawaban::where('user_id', $this->users->id)->delete();
+        notify()->success("data berhasil dihapus!");
+        return redirect(route('user.deteksi'));
+    }
 }

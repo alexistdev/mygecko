@@ -102,7 +102,7 @@
                                 </div>
                                 <div class="row mt-5">
                                     <div class="col-md-12">
-                                        <button class="btn btn-danger">Ulangi</button>
+                                        <a href="{{url('/user/deteksi/ulangi')}}"><button class="btn btn-danger">Ulangi</button></a>
                                     </div>
                                 </div>
                             @else
@@ -113,7 +113,7 @@
                                 </div>
                                 <div class="row mt-5">
                                     <div class="col-md-12">
-                                        <button class="btn btn-danger">Ulangi</button>
+                                        <a href="{{url('/user/deteksi/ulangi')}}"><button class="btn btn-danger">Ulangi</button></a>
                                     </div>
                                 </div>
                             @endif
