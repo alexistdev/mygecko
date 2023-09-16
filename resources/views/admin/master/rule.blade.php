@@ -24,7 +24,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <x-notify-messages />
+{{--                    <x-notify-messages />--}}
                 </div>
             </div>
             <!-- Small boxes (Stat box) -->
