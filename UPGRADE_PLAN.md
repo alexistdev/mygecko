@@ -59,7 +59,7 @@ structure is **not required** and will not be performed.
 | `guzzlehttp/guzzle` | `^7.2` | `^7.8` | framework floor is `^7.8.2` |
 | `jeroennoten/laravel-adminlte` | `^3.15` | `^3.16` | v3.16 declares `laravel/framework >=8.0`; keeps AdminLTE **3** assets and the `vendor/adminlte` asset paths the Blade views use. v4 would swap in AdminLTE 4/Bootstrap 5 and break every view — **not** taken. |
 | `mckenziearts/laravel-notify` | `^2.4` | `^2.7` | v2.7 allows `illuminate/support ^12.0`. v3 requires PHP `^8.3` and changes the API — **not** taken. |
-| `yajra/laravel-datatables` | `^9.0` | `^12.0` | metapackage; v12 tracks Laravel 12 |
+| `yajra/laravel-datatables` | `^9.0` | **removed** | metapackage. On the Laravel 10+ line it additionally pulls `-export`, which drags Livewire, PhpSpreadsheet and OpenSpout into production. The application imports only `Yajra\DataTables\DataTables`, so the metapackage was dropped in favour of `-oracle` alone. |
 | `yajra/laravel-datatables-oracle` | `^10.0` | `^12.0` | provides `Yajra\DataTables\DataTables` used by five controllers |
 
 ### Development
@@ -215,3 +215,36 @@ gating). This is the principal limitation of this migration and is recorded as s
 7. **Manual verification checklist** (cannot be automated here — no seeded database or browser session):
    login → role redirect (admin/user), each admin DataTable AJAX endpoint, each admin create form,
    user delete, and the `deteksi` question/answer flow.
+
+
+---
+
+## 11. Outcome
+
+This plan was written before any code changed. It survived contact with the migration
+almost intact; the two places where reality differed are recorded here rather than
+edited into the sections above.
+
+**The yajra metapackage was removed rather than bumped.** The plan assumed a simple
+version bump. In practice `yajra/laravel-datatables ^10` and newer pull
+`yajra/laravel-datatables-export`, which brings Livewire, PhpSpreadsheet and OpenSpout
+into production and registers four `livewire/*` routes that Laravel 9 did not have. The
+application imports one class from the whole bundle, so requiring
+`yajra/laravel-datatables-oracle` directly was the smaller change in substance even
+though it is the larger change in `composer.json`. This also removed the abandoned
+`laravelcollective/html` that the plan identified as the one hard blocker.
+
+**Laravel 11 could not be reached at a stable tag.** The plan did not anticipate
+Composer's advisory policy. Laravel 11 is end of life, every stable 11.x release carries
+an unpatched advisory, and Composer therefore refuses to load any of them, falling back
+to the 11.x maintenance branch. Laravel 11 was only a waypoint, and Laravel 12 resolves
+to `v12.69.2` with a clean `composer audit`, so this affected nothing in the final state.
+
+Everything else went as planned. The classic skeleton was retained, the "must not
+change" list was honoured in full, and the highest-rated regression risk — the
+three-major jump in yajra DataTables — was verified rather than assumed: the three
+admin AJAX endpoints return the same JSON envelope, index column and action markup on
+Laravel 12 as on Laravel 9.
+
+Results, per-version test counts, the full file-by-file rationale and the open items
+are in [`UPGRADE_NOTES.md`](UPGRADE_NOTES.md).
